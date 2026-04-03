@@ -213,7 +213,7 @@ public class BoardController {
 		return "board/update";
 	}
 
-	@GetMapping(value="/board/update")
+	@PostMapping(value="/board/update")
 	public String updateArticle(Board board, RedirectAttributes redirectAttrs) {
 		logger.info("/board/update " + board.toString());
 		String dbPassword = boardService.getPassword(board.getBoardId());
