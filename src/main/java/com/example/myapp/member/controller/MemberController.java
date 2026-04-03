@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.myapp.member.model.Member;
 import com.example.myapp.member.service.IMemberService;
+import com.example.myapp.member.MemberValidator;
 
 @Controller
 public class MemberController {
