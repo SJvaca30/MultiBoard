@@ -12,50 +12,35 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import com.example.myapp.common.filter.LoginInterceptor;
-
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Bean(value = "localeResolver")
-    public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.KOREAN);
-        return slr;
-    }
+	@Bean(value = "localeResolver")
+	public LocaleResolver localeResolver() {
+		SessionLocaleResolver slr = new SessionLocaleResolver();
+		slr.setDefaultLocale(Locale.KOREAN);
+		return slr;
+	}
 
-    @Bean(value = "messageSource")
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource =
-                new ResourceBundleMessageSource();
-        messageSource.setBasenames("i18n/message");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
+	@Bean(value = "messageSource")
+	public MessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasenames("i18n/message");
+		messageSource.setDefaultEncoding("UTF-8");
+		return messageSource;
+	}
 
-    @Bean(value = "localeChangeInterceptor")
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang");
-        return lci;
-    }
-    
-    @Bean
-    LoginInterceptor loginInterceptor() {
-        return new LoginInterceptor();
-    }
+	@Bean(value = "localeChangeInterceptor")
+	public LocaleChangeInterceptor localeChangeInterceptor() {
+		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+		lci.setParamName("lang");
+		return lci;
+	}
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-        registry.addInterceptor(loginInterceptor())
-                .addPathPatterns("/file/**")
-                .addPathPatterns("/board/write/**")
-                .addPathPatterns("/board/update/**")
-                .addPathPatterns("/board/reply/**")
-                .addPathPatterns("/board/delete/**");
-    }
-    
-    
-    
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(localeChangeInterceptor());
+
+	}
+
 }

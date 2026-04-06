@@ -4,9 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import org.slf4j.Logger;
@@ -23,11 +20,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.example.myapp.MyappApplication;
 import com.example.myapp.board.model.Board;
 import com.example.myapp.board.model.BoardCategory;
@@ -35,10 +31,13 @@ import com.example.myapp.board.model.BoardUploadFile;
 import com.example.myapp.board.service.IBoardCategoryService;
 import com.example.myapp.board.service.IBoardService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class BoardController {
 
-    private final MyappApplication myappApplication;
+  private final MyappApplication myappApplication;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
