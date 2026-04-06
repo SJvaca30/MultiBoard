@@ -40,21 +40,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return lci;
     }
     
-    @Bean
-    LoginInterceptor loginInterceptor() {
-        return new LoginInterceptor();
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-        registry.addInterceptor(loginInterceptor())
-                .addPathPatterns("/file/**")
-                .addPathPatterns("/board/write/**")
-                .addPathPatterns("/board/update/**")
-                .addPathPatterns("/board/reply/**")
-                .addPathPatterns("/board/delete/**");
-    }
+//    @Bean
+//    LoginInterceptor loginInterceptor() {
+//        return new LoginInterceptor();
+//    }
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(localeChangeInterceptor());
+//        registry.addInterceptor(loginInterceptor())
+//                .addPathPatterns("/file/**")
+//                .addPathPatterns("/board/write/**")
+//                .addPathPatterns("/board/update/**")
+//                .addPathPatterns("/board/reply/**")
+//                .addPathPatterns("/board/delete/**");
+//    }
     
     
     

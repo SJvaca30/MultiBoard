@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{/include/header :: header}"></head>
 
@@ -10,8 +10,8 @@
 			<div class="row">
 				<div class="col-md-6 pc">
 					<h2>
-						<span th:text="#{BOARD_LIST}">BOARD LIST</span>
-						<small style="color:red;" th:if="${email==null}" th:text="#{LOGIN}"></small>
+						<span th:text="#{BOARD_LIST}">BOARD LIST</span><span></span>
+						<small style="color:red;" sec:authorize="isAnonymous()" th:text="#{LOGIN}"></small>
 					</h2>
 				</div>
 				<div class="col-md-6">
